@@ -2,14 +2,14 @@
 ## [APP NAME]  
   
 Codé par :   
- - [prenom1] [nom1]   
- - [prenom2] [nom2]   
+ - [Martin] [Caron]
+ - [Axelle] [Arnaud]
 
 ## Description  
   
-URL des données : [URL]  
+URL des données : [URL]
   
-[A completer]  
+[A https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/]
   
 ## Librairies externes  
   
