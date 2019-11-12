@@ -6,7 +6,7 @@ import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener{
+class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener,displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener {
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
 
@@ -34,6 +34,15 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
     }
 
     fun displayStarbucksList(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = displayListStarbucksFragment()
+
+        val bundle = Bundle()
+        bundle.putSerializable("starbucks",starbucksTable)
+        fragment.arguments = bundle
+
+        fragmentTransaction.replace(R.id.fragment_space, fragment)
+        fragmentTransaction.commit()
 
     }
 
@@ -48,8 +57,13 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
     fun displayMap(){
 
     }
-
-// Pour les interfaces des fragments
+    /**
+     * Pour les interfaces des fragments
+     */
     override fun onAppDetailsFragmentInteraction(uri: Uri) {
+    }
+
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
