@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
     }
 
     fun displayStarbucksList(){
+        val test: Starbucks = Starbucks("NYC", "5th ave")
+        starbucksTable.add(test)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = displayListStarbucksFragment()
 
