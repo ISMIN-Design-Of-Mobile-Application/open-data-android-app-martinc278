@@ -1,11 +1,12 @@
 package com.ismin.opendataapp
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener{
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
 
@@ -37,10 +38,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun displayAppDetails(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = AppDetailsFragment()
 
+        fragmentTransaction.replace(R.id.fragment_space, fragment)
+        fragmentTransaction.commit()
     }
 
     fun displayMap(){
 
+    }
+
+// Pour les interfaces des fragments
+    override fun onAppDetailsFragmentInteraction(uri: Uri) {
     }
 }
