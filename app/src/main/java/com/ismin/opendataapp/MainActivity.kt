@@ -1,11 +1,13 @@
 package com.ismin.opendataapp
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener {
+
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
 
@@ -33,6 +35,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun displayStarbucksList(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = displayListStarbucksFragment()
+
+        val bundle = Bundle()
+        bundle.putSerializable("starbucks",starbucksTable)
+        fragment.arguments = bundle
+
+        fragmentTransaction.replace(R.id.fragment_space, fragment)
+        fragmentTransaction.commit()
 
     }
 
@@ -42,5 +53,9 @@ class MainActivity : AppCompatActivity() {
 
     fun displayMap(){
 
+    }
+
+    override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
