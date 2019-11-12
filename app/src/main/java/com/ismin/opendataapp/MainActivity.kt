@@ -6,8 +6,7 @@ import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener {
-
+class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener,displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener {
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
 
@@ -48,11 +47,20 @@ class MainActivity : AppCompatActivity(), displayListStarbucksFragment.displayLi
     }
 
     fun displayAppDetails(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = AppDetailsFragment()
 
+        fragmentTransaction.replace(R.id.fragment_space, fragment)
+        fragmentTransaction.commit()
     }
 
     fun displayMap(){
 
+    }
+    /**
+     * Pour les interfaces des fragments
+     */
+    override fun onAppDetailsFragmentInteraction(uri: Uri) {
     }
 
     override fun onFragmentInteraction(uri: Uri) {
