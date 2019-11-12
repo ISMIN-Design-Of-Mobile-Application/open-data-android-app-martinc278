@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * A simple [Fragment] subclass.
@@ -15,6 +18,7 @@ import android.view.ViewGroup
  * to handle interaction events.
  */
 class displayListStarbucksFragment : Fragment() {
+    private lateinit var recyclerView: RecyclerView
     private var listener: displayListStarbucksFragmentInteractionListener? = null
 
     override fun onCreateView(
@@ -24,6 +28,18 @@ class displayListStarbucksFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootview= inflater.inflate(R.layout.fragment_display_list_starbucks, container, false)
         val starbucksTable = arguments!!.getSerializable("starbucks") as ArrayList<Starbucks>
+
+        recyclerView = rootview.findViewById<RecyclerView>(R.id.a_rcv_starbucks)
+        val adapter = StarbucksAdapter(starbucksTable, AdapterView.OnItemClickListener { parent, view, position, id ->
+            starbucksTable.removeAt(position)
+            recyclerView.adapter?.notifyDataSetChanged()
+
+        })
+        recyclerView.adapter = adapter
+
+        val layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = layoutManager
+
         return rootview
     }
 

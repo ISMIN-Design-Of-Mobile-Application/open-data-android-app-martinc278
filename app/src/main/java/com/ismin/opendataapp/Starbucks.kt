@@ -1,4 +1,4 @@
 package com.ismin.opendataapp
 
-data class Starbucks(val city:String) {
+data class Starbucks(val city:String, val street:String) {
 }
