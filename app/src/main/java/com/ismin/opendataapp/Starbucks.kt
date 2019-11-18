@@ -1,4 +1,6 @@
 package com.ismin.opendataapp
 
-data class Starbucks(val city:String, val street:String) {
+import com.google.gson.annotations.SerializedName
+
+data class Starbucks(val city:String, @SerializedName("street_combined")  val street:String) {
 }
