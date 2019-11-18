@@ -11,7 +11,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener,displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener {
+class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener,displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener, MapsFragment.MapsFragmentInteractionListener {
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
     private lateinit var starbucksService: StarbucksService
@@ -96,7 +96,11 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
     }
 
     fun displayMap(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragment = MapsFragment()
 
+        fragmentTransaction.replace(R.id.fragment_space, fragment)
+        fragmentTransaction.commit()
     }
     /**
      * Pour les interfaces des fragments
@@ -105,6 +109,10 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
     }
 
     override fun onFragmentInteraction(uri: Uri) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun mapsInteraction() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
