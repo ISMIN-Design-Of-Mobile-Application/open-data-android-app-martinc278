@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
                     call: Call<List<Starbucks>>,
                     response: Response<List<Starbucks>>
                 ) {
-                    val allBottles = response.body()
+                    val allStarbucks = response.body()
                     starbucksTable.clear()
-                    if(allBottles!=null) {
-                        starbucksTable.addAll(allBottles)
+                    if(allStarbucks!=null) {
+                        starbucksTable.addAll(allStarbucks)
                     }
                     displayStarbucksList()
                 }
