@@ -3,6 +3,7 @@ package com.ismin.opendataapp
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
@@ -11,11 +12,15 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmentInteractionListener,displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener, MapsFragment.MapsFragmentInteractionListener {
+class MainActivity : AppCompatActivity(),
+    AppDetailsFragment.OnAppDetailsFragmentInteractionListener,
+    displayListStarbucksFragment.displayListStarbucksFragmentInteractionListener,
+    MapsFragment.MapsFragmentInteractionListener {
 
     private val starbucksTable: ArrayList<Starbucks> = arrayListOf();
     private lateinit var starbucksService: StarbucksService
     private var SERVER_BASE_URL: String = "https://data.opendatasoft.com/api/v2/"
+    private lateinit var starbucksDAO: StarbucksDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +28,16 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
 
         displayStarbucksList(); //On commence par afficher la liste des starbucks dans l'applicatipon
 
-        this.findViewById<Button>(R.id.a_starbucks_list).setOnClickListener{
+        starbucksDAO = AppDataBase.getAppDatabase(this).getStarbuckskDao()
+
+
+        this.findViewById<Button>(R.id.a_starbucks_list).setOnClickListener {
             displayStarbucksList()
         }
-        this.findViewById<Button>(R.id.a_app_details).setOnClickListener{
+        this.findViewById<Button>(R.id.a_app_details).setOnClickListener {
             displayAppDetails()
         }
-        this.findViewById<Button>(R.id.a_map).setOnClickListener{
+        this.findViewById<Button>(R.id.a_map).setOnClickListener {
             displayMap()
         }
 
@@ -40,8 +48,9 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
 
         starbucksService = retrofit.create<StarbucksService>(StarbucksService::class.java)
 
-        getStarbucksFromServer()
-        displayStarbucksList()
+        getStarbucksOnStart();
+        //getStarbucksFromServer()
+        //displayStarbucksList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,7 +59,25 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
         return super.onCreateOptionsMenu(menu)
     }
 
-    fun getStarbucksFromServer(){
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.m_button_fetch -> {
+                getStarbucksFromServer()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun getStarbucksOnStart(){
+        starbucksTable.clear()
+        starbucksTable.addAll(starbucksDAO.getAll())
+        displayStarbucksList()
+    }
+
+    fun getStarbucksFromServer() {
+        AppDataBase.getAppDatabase(this).clearAllTables()
         starbucksService.getStarbucks()
             .enqueue(object : Callback<List<Starbucks>> {
                 override fun onResponse(
@@ -58,11 +85,18 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
                     response: Response<List<Starbucks>>
                 ) {
                     val allStarbucks = response.body()
-                    starbucksTable.clear()
-                    if(allStarbucks!=null) {
-                        starbucksTable.addAll(allStarbucks)
+                    //starbucksTable.clear()
+                    if (allStarbucks != null) {
+                        allStarbucks.forEach {
+                            starbucksDAO.insert(it)
+                        }
+                        //starbucksTable.addAll(allStarbucks)
                     }
-                    displayStarbucksList()
+
+
+
+                    //displayStarbucksList()
+                    getStarbucksOnStart()
                 }
 
                 override fun onFailure(call: Call<List<Starbucks>>, t: Throwable) {
@@ -72,14 +106,14 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
 
     }
 
-    fun displayStarbucksList(){
+    fun displayStarbucksList() {
         val test: Starbucks = Starbucks("NYC", "5th ave")
         starbucksTable.add(test)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = displayListStarbucksFragment()
 
         val bundle = Bundle()
-        bundle.putSerializable("starbucks",starbucksTable)
+        bundle.putSerializable("starbucks", starbucksTable)
         fragment.arguments = bundle
 
         fragmentTransaction.replace(R.id.fragment_space, fragment)
@@ -87,7 +121,7 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
 
     }
 
-    fun displayAppDetails(){
+    fun displayAppDetails() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = AppDetailsFragment()
 
@@ -95,13 +129,14 @@ class MainActivity : AppCompatActivity(), AppDetailsFragment.OnAppDetailsFragmen
         fragmentTransaction.commit()
     }
 
-    fun displayMap(){
+    fun displayMap() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = MapsFragment()
 
         fragmentTransaction.replace(R.id.fragment_space, fragment)
         fragmentTransaction.commit()
     }
+
     /**
      * Pour les interfaces des fragments
      */
