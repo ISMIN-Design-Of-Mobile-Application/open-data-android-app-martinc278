@@ -47,7 +47,7 @@ class displayListStarbucksFragment : Fragment() {
         return rootview
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }

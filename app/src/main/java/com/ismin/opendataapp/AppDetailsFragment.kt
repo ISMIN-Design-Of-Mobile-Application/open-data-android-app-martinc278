@@ -7,18 +7,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.content.Intent
+
+
 
 /**
  * Fragment pour la partie "App details" de l'application
  */
 class AppDetailsFragment : Fragment() {
     private var listener: OnAppDetailsFragmentInteractionListener? = null
+    private lateinit var rootView : View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-        return inflater.inflate(R.layout.fragment_app_details, container, false)
+        rootView = inflater.inflate(R.layout.fragment_app_details, container, false)
+        rootView.findViewById<Button>(R.id.buttonSendReview).setOnClickListener{sendEmail() }
+        return rootView
+    }
+
+    private fun sendEmail() {
+
     }
 
     override fun onAttach(context: Context) {
