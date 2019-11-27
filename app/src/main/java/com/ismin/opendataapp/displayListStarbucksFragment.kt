@@ -24,7 +24,7 @@ const val STARBUCKS_DETAILS__REQUEST_CODE = "1"
 class displayListStarbucksFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var listener: displayListStarbucksFragmentInteractionListener? = null
-    private var starbucksTable: ArrayList<Starbucks> = arrayListOf();
+    private var starbucksTable: ArrayList<Starbucks> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

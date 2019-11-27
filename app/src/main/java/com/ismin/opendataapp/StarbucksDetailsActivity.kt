@@ -20,6 +20,8 @@ class StarbucksDetailsActivity : AppCompatActivity() {
         val starbucksToDisplay: Starbucks = getIntent().getSerializableExtra(STARBUCK_DETAIL_EXTRA_KEY) as Starbucks
         findViewById<TextView>(R.id.a_starbucks_details_cityToChange).text = starbucksToDisplay.city
         findViewById<TextView>(R.id.a_starbucks_details_streetToChange).text = starbucksToDisplay.street
+        findViewById<TextView>(R.id.a_starbucks_details_latitudeToChange).text = starbucksToDisplay.latitude.toString()
+        findViewById<TextView>(R.id.a_starbucks_details_longitudeToChange).text = starbucksToDisplay.longitude.toString()
     }
 
     fun stopActivityAndReturnResult(view : View) {

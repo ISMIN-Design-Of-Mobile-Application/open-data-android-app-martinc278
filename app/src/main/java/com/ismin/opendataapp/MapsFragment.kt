@@ -20,8 +20,10 @@ import com.google.android.gms.maps.model.MarkerOptions
  * [MapsFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
  */
+
 class MapsFragment : Fragment(), OnMapReadyCallback {
 
+    private var starbucksTable: ArrayList<Starbucks> = arrayListOf()
     private var listener: MapsFragmentInteractionListener? = null
     private lateinit var mMap: GoogleMap
 
@@ -31,6 +33,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         // Inflate the layout for this fragment
         val rootview= inflater.inflate(R.layout.fragment_maps, container, false)
+        starbucksTable = arguments!!.getSerializable("starbucks") as ArrayList<Starbucks>
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -45,6 +48,13 @@ class MapsFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+
+        //mMap.addMarker(MarkerOptions().position(LatLng(starbucksTable.get(0).latitude, starbucksTable.get(0).longitude)))
+
+        starbucksTable.forEach {
+            val starbucks = LatLng(it.latitude, it.longitude)
+            mMap.addMarker(MarkerOptions().position(starbucks))
+        }
 
         val gardanne = LatLng(43.45, 5.4667)
         mMap.addMarker(MarkerOptions().position(gardanne).title("Mines St Etienne"))

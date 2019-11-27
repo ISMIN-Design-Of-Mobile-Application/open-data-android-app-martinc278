@@ -46,6 +46,40 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Latitude: "/>
+        <TextView
+            android:id="@+id/a_starbucks_details_latitudeToChange"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Latitude to change "/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Longitude: "/>
+        <TextView
+            android:id="@+id/a_starbucks_details_longitudeToChange"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Longitude to change "/>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/a_starbucks_details_close"
         android:layout_width="match_parent"

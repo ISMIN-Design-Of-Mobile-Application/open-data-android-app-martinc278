@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun displayStarbucksList() {
-        val test: Starbucks = Starbucks("NYC", "5th ave")
+        val test: Starbucks = Starbucks("NYC", "5th ave", 40.7128, 74.0060)
         starbucksTable.add(test)
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = displayListStarbucksFragment()
@@ -132,6 +132,10 @@ class MainActivity : AppCompatActivity(),
     fun displayMap() {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val fragment = MapsFragment()
+
+        val bundle = Bundle()
+        bundle.putSerializable("starbucks", starbucksTable)
+        fragment.arguments = bundle
 
         fragmentTransaction.replace(R.id.fragment_space, fragment)
         fragmentTransaction.commit()
