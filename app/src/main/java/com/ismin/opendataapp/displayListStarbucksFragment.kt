@@ -1,6 +1,7 @@
 package com.ismin.opendataapp
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,9 +18,13 @@ import androidx.recyclerview.widget.RecyclerView
  * [displayListStarbucksFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
  */
+
+const val STARBUCKS_DETAILS__REQUEST_CODE = "1"
+
 class displayListStarbucksFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var listener: displayListStarbucksFragmentInteractionListener? = null
+    private var starbucksTable: ArrayList<Starbucks> = arrayListOf();
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +32,12 @@ class displayListStarbucksFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootview= inflater.inflate(R.layout.fragment_display_list_starbucks, container, false)
-        val starbucksTable = arguments!!.getSerializable("starbucks") as ArrayList<Starbucks>
+        starbucksTable = arguments!!.getSerializable("starbucks") as ArrayList<Starbucks>
 
         recyclerView = rootview.findViewById<RecyclerView>(R.id.a_rcv_starbucks)
         val adapter = StarbucksAdapter(starbucksTable, AdapterView.OnItemClickListener { parent, view, position, id ->
-            starbucksTable.removeAt(position)
-            recyclerView.adapter?.notifyDataSetChanged()
-
+            starbucksDetails(position)
+            //recyclerView.adapter?.notifyDataSetChanged()
         })
         recyclerView.adapter = adapter
 
@@ -76,6 +80,16 @@ class displayListStarbucksFragment : Fragment() {
     interface displayListStarbucksFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
+    }
+
+    fun starbucksDetails(position: Int){
+        val intent = Intent(this.context, StarbucksDetailsActivity::class.java)
+        intent.putExtra(STARBUCKS_DETAILS__REQUEST_CODE, starbucksTable.get(position))
+        startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }
