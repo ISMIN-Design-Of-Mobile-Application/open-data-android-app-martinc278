@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.content.Intent
-import android.widget.Toast
+
 
 
 /**
@@ -19,8 +19,8 @@ class AppDetailsFragment : Fragment() {
     private var listener: OnAppDetailsFragmentInteractionListener? = null
     private lateinit var rootView : View
     private var subject : String = "App Review"
-    private var message : String = "\nEnvoyé depuis l'application"
-    private var recipient : String = "xoulette@gmail.com,martin-caron@outlook.com"
+    private var message : String = "\nEnvoyé depuis l'application!"
+    private var recipient : String = "axelle.arnaud@orange.fr,martin-caron@outlook.com"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +31,7 @@ class AppDetailsFragment : Fragment() {
         rootView.findViewById<Button>(R.id.buttonSendReview).setOnClickListener{sendEmail() }
         return rootView
     }
+
 
     private fun sendEmail() {
         val mIntent = Intent(Intent.ACTION_SEND)
@@ -45,7 +46,7 @@ class AppDetailsFragment : Fragment() {
 
         try {
             //start email intent
-            startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
+            startActivity(Intent.createChooser(mIntent, "Please choose Email Client..."))
         }
         catch (e: Exception){
             //if any thing goes wrong for example no email client application or any exception
@@ -53,6 +54,7 @@ class AppDetailsFragment : Fragment() {
             //Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
     }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
