@@ -3,7 +3,7 @@
   
 Codé par :   
  - Martin Caron
- - Axelle Arnaud
+ - Axelle Arnaud (surtout elle)
 
 ## Description  
   
