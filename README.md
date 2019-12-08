@@ -7,7 +7,7 @@ Codé par :
 
 ## Description  
   
-URL des données : https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/
+Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
   
 ## Librairies externes  
   
