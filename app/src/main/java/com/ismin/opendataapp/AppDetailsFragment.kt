@@ -19,7 +19,7 @@ class AppDetailsFragment : Fragment() {
     private var listener: OnAppDetailsFragmentInteractionListener? = null
     private lateinit var rootView : View
     private var subject : String = "App Review"
-    private var message : String = "\nEnvoyé depuis l'application!"
+    private var message : String = "\nEnvoyé depuis l'application! "
     private var recipient : String = "axelle.arnaud@orange.fr,martin-caron@outlook.com"
 
     override fun onCreateView(
