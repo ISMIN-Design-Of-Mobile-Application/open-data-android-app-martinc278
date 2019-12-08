@@ -11,7 +11,12 @@ URL des données : https://data.opendatasoft.com/explore/dataset/all-starbucks-l
   
 ## Librairies externes  
   
-[A completer]  
+- GMS :
+      - Maps
+- Retrofit :
+      - Pour aller chercher la liste des starbucks depuis l'API mentionnée ci-dessus
+- Room :
+      - Pour la BDD
   
 ## Consignes  
   

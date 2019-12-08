@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        displayStarbucksList(); //On commence par afficher la liste des starbucks dans l'applicatipon
+        displayStarbucksList() //On commence par afficher la liste des starbucks dans l'applicatipon
 
         starbucksDAO = AppDataBase.getAppDatabase(this).getStarbuckskDao()
 
