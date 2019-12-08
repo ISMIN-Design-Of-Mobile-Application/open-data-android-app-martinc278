@@ -1,15 +1,13 @@
 
-## [APP NAME]  
+## Starbucks Finder
   
 Codé par :   
- - [Martin] [Caron]
- - [Axelle] [Arnaud]
+ - Martin Caron
+ - Axelle Arnaud
 
 ## Description  
   
-URL des données : [URL]
-  
-[A https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/]
+URL des données : https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/
   
 ## Librairies externes  
   
@@ -34,7 +32,7 @@ Lien vers le sujet : https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxse
  - [ ] Application composée au minimum de 3 Fragment et 2 Activity  
  - [ ] Une Actionbar sera présente et permettra de rafraîchir les données récupérées et affichées
  
- ## Bonus
+ ### Bonus
  
  - Amélioration de l’expérience utilisateur :
     - Clustering des markers sur la carte en fonction du niveau de zoom
