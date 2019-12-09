@@ -14,10 +14,18 @@ Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/expl
 - GMS (Maps)
 - Retrofit (Pour aller chercher la liste des starbucks depuis l'API mentionnée ci-dessus)
 - Room (Pour la BDD)
+
+##Fonctionnement général de l'app
+
+- L'application se présente sous la forme d'une activité gérant 3 **fragments**:
+	- *Liste des Starbucks* : Vous avez accès à tous les starbucks possibles depuis la liste donnée par notre API. Vous avez accès aux détails du starbucks considéré. Cliquer sur le bouton détail lancera une nouvelle **activité** qui affiche au hazard une image de Starbucks parmi un pool de 10 images disponibles, ainsi que les informations du Starbucks considéré
+	- *Maps* : Vous pouvez voir où sont tous les starbucks dans notre liste, directement sur une carte 
+	- *Détails de l'application* : Vous pouvez directement nous envoyer un feedback, nos addresses emails sont enregistrées ;)
+- L'application peut être utilisée hors connexion grâce à sa base de données. Cette base de données est rafraichie à chaque ouverture de l'app, et peut l'être de même lors de l'appui sur le bouton dédié dans le menu (en haut à droite de l'application)
   
 ## Consignes  
   
-[sujet](https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxseC94n7oBGYfhw-9xIftaTDbzk/edit#slide=id.p97)  
+[Sujet](https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxseC94n7oBGYfhw-9xIftaTDbzk/edit#slide=id.p97)  
   
 ### But du projet  
   
