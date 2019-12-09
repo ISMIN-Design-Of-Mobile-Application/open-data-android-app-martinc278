@@ -3,25 +3,27 @@
   
 Codé par :   
  - Martin Caron
- - Axelle Arnaud (***surtout elle***)
+ - Axelle Arnaud
 
 ## Description  
-  
-Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
-  
+
+- Notre application agit comme un Starbucks Locator. D'après les données de l'API ci-dessous mentionée, elle fetch, stocke et affiche les starbucks 
+- Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
+
+## Fonctionnement général de l'app
+
+- L'application se présente sous la forme d'une **activité** principale gérant 3 **fragments**:
+	- *Liste des Starbucks* : Vous avez accès à tous les starbucks possibles depuis la liste donnée par notre API. Vous avez accès aux détails du starbucks considéré. Cliquer sur le bouton détail lancera une nouvelle **activité** qui affiche au hazard une image de Starbucks parmi un pool de 10 images disponibles (en effet, notre API ne permettait pas de recevoir une image, seulement des données de localisation, etc...), ainsi que les informations du Starbucks considéré
+	- *Maps* : Vous pouvez voir où sont tous les starbucks dans notre liste, directement sur une carte 
+	- *Détails de l'application* : Vous pouvez directement nous envoyer un feedback, nos adresses emails sont enregistrées ;)
+- Le menu en haut à droite de l'applicaiton possède un mécanisme de rafraichissement de la base de données. Ces données sont cherchées sur l'API opendata mentionnée ci-dessus. Ces données sont récupérées sous la forme d'un fichier JSON. Sont récupérées les informations de la ville, adresse et position (latitude, longitude). 
+- L'application peut être utilisée hors connexion grâce à sa base de données. Cette base de données est rafraichie à chaque ouverture de l'app, et peut l'être de même lors de l'appui sur le bouton dédié dans le menu (en haut à droite de l'application)
+
 ## Librairies externes  
   
 - GMS (Maps)
 - Retrofit (Pour aller chercher la liste des starbucks depuis l'API mentionnée ci-dessus)
 - Room (Pour la BDD)
-
-## Fonctionnement général de l'app
-
-- L'application se présente sous la forme d'une activité gérant 3 **fragments**:
-	- *Liste des Starbucks* : Vous avez accès à tous les starbucks possibles depuis la liste donnée par notre API. Vous avez accès aux détails du starbucks considéré. Cliquer sur le bouton détail lancera une nouvelle **activité** qui affiche au hazard une image de Starbucks parmi un pool de 10 images disponibles, ainsi que les informations du Starbucks considéré
-	- *Maps* : Vous pouvez voir où sont tous les starbucks dans notre liste, directement sur une carte 
-	- *Détails de l'application* : Vous pouvez directement nous envoyer un feedback, nos addresses emails sont enregistrées ;)
-- L'application peut être utilisée hors connexion grâce à sa base de données. Cette base de données est rafraichie à chaque ouverture de l'app, et peut l'être de même lors de l'appui sur le bouton dédié dans le menu (en haut à droite de l'application)
   
 ## Consignes  
   
