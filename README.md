@@ -3,7 +3,7 @@
   
 Codé par :   
  - Martin Caron
- - Axelle Arnaud (surtout elle)
+ - Axelle Arnaud (***surtout elle***)
 
 ## Description  
   
@@ -15,7 +15,7 @@ Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/expl
 - Retrofit (Pour aller chercher la liste des starbucks depuis l'API mentionnée ci-dessus)
 - Room (Pour la BDD)
 
-##Fonctionnement général de l'app
+## Fonctionnement général de l'app
 
 - L'application se présente sous la forme d'une activité gérant 3 **fragments**:
 	- *Liste des Starbucks* : Vous avez accès à tous les starbucks possibles depuis la liste donnée par notre API. Vous avez accès aux détails du starbucks considéré. Cliquer sur le bouton détail lancera une nouvelle **activité** qui affiche au hazard une image de Starbucks parmi un pool de 10 images disponibles, ainsi que les informations du Starbucks considéré
