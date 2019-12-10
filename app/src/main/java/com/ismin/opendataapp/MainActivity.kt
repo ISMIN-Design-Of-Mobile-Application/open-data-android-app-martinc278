@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(),
         starbucksService = retrofit.create<StarbucksService>(StarbucksService::class.java)
 
         getStarbucksOnStart();
-        //getStarbucksFromServer()
+        getStarbucksFromServer()
         //displayStarbucksList()
     }
 
