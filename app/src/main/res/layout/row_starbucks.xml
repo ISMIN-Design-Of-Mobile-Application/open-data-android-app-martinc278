@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
@@ -13,12 +13,19 @@
         android:layout_height="match_parent"
         android:src="@drawable/logo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:id="@+id/r_icon_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="Details" />
+        android:text="Details"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="@color/colorBackground"
+        app:cornerRadius="8dp"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="@color/colorBorder"
+        app:strokeWidth="2dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
