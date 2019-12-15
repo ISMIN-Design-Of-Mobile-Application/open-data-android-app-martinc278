@@ -20,6 +20,8 @@ Coded by :
 - Action bar: features a database refreshment mecanism. The data is fetched to a distant server using the Opendata API. The received data is coded through a JSON format. Raw data includes location (longtide, latitude), city and address.
 - App can be used offline, thanks to a database that saves the Starbucks data. The database is refreshed on app opening, provided the device has got access to the Internet. The databse can also be refreshed manually through a dedicated button in the action bar. 
 
+***Disclaimer*** : The app features a limited amount of Strabucks Stores. It comes from the fact the API has only a limited number of those... Don't be surprised if you don't find your favorite Starbucks Store in Grenoble... ;) 
+
 ## External Librairies/Dependencies  
   
 - GMS (Maps)
