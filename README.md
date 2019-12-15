@@ -1,14 +1,14 @@
 
-## Starbucks Locator
+# Starbucks Locator
   
-Codé par :   
+Coded by :   
  - Martin Caron
  - Axelle Arnaud
 
-## Description  
+## Bird's eye overview
 
-- Notre application agit comme un Starbucks Locator. D'après les données de l'API ci-dessous mentionée, elle fetch, stocke et affiche les starbucks 
-- Nous avons utilisé les données d'[OpenData](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
+- Our app acts as a Starbucks locator. From a distant server, via an API, it fetches, saves et displays the starbucks available through the API
+- We used the [OpenData data](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
 
 ## Fonctionnement général de l'app
 
@@ -19,38 +19,38 @@ Codé par :
 - Le menu en haut à droite de l'applicaiton possède un mécanisme de rafraichissement de la base de données. Ces données sont cherchées sur l'API opendata mentionnée ci-dessus. Ces données sont récupérées sous la forme d'un fichier JSON. Sont récupérées les informations de la ville, adresse et position (latitude, longitude). 
 - L'application peut être utilisée hors connexion grâce à sa base de données. Cette base de données est rafraichie à chaque ouverture de l'app, et peut l'être de même lors de l'appui sur le bouton dédié dans le menu (en haut à droite de l'application)
 
-## Librairies externes  
+## External Librairies/Dependencies  
   
 - GMS (Maps)
-- Retrofit (Pour aller chercher la liste des starbucks depuis l'API mentionnée ci-dessus)
-- Room (Pour la BDD)
+- Retrofit (Fetches the Starbucks data form the API)
+- Room (Database Management)
   
-## Consignes  
+## Project Recquirements
   
-[Sujet](https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxseC94n7oBGYfhw-9xIftaTDbzk/edit#slide=id.p97)  
+[Recquirements](https://docs.google.com/presentation/d/1mwu2xx7_qfCZDfsRxseC94n7oBGYfhw-9xIftaTDbzk/edit#slide=id.p97)  
   
-### But du projet  
+### Purpose of the project  
   
- - Le but du projet est de réaliser une application permettant de visualiser une série de données OpenData  
- - Les données devront être récupérées sur un serveur distant et affichées dans une liste et sur une carte  
- - Un clique sur un élément de la liste ou sur un marker de la carte permet d’accéder à un écran présentant le détail de l’élément  
- - Un écran présentera des informations générales sur les données récupérées  
+ - The goal of the project is to create an application to visualize a series of OpenData data
+ - The data will have to be retrieved from a remote server and displayed in a list and on a map  
+ - Clicking on an item in the list or on a marker on the map gives access to a screen showing the details of the item
+ - A screen will present general information about the recovered data
   
-### Exigences    
-- [ ] Format des données OpenData :   
-	 - Format Json  
-	 - Avec un champ correspondant à l’url d’une image  
-	 - Avec un champ correspondant à une position  
- - [ ] Application composée au minimum de 3 Fragment et 2 Activity  
- - [ ] Une Actionbar sera présente et permettra de rafraîchir les données récupérées et affichées
+### Bird's eye overview of the recquirements    
+- [ ] OpenData data format :   
+	 - Json Format  
+	 - Field matching the url an image URL
+	 - Field matching a position  
+ - [ ] 3 fragments and 2 activities minimum app
+ - [ ] Actionbar at the top of the app with data refreshment feature 
  
  ### Bonus
  
- - Amélioration de l’expérience utilisateur :
-    - Clustering des markers sur la carte en fonction du niveau de zoom
-    - Mise en place d’un système de recherche/filtre sur la liste affichée
+ - Improved user experience:
+    - Clustering of markers on the map according to the zoom level
+    - Setting up a search/filter system on the displayed list
  
- - Enrichissements techniques :
-    - Mise en place d’une base de données locale pour afficher la liste d’élément en mode hors connexion
-    - Utilisation de LiveData ou d’Observable pour la récupération de données dans la BDD
+ - Technical improvment:
+    - Setting up a local database to display the item list in offline mode
+    - Using LiveData or Observable for data recovery in the database
  
