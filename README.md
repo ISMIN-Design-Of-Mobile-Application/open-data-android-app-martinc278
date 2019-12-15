@@ -10,6 +10,16 @@ Coded by :
 - Our app acts as a Starbucks locator. From a distant server, via an API, it fetches, saves et displays the starbucks available through the API
 - We used the [OpenData data](https://data.opendatasoft.com/explore/dataset/all-starbucks-locations-in-the-world%40public-us/table/)
 
+## App overview
+
+- This app feature two **activites** and 3 **fragments**
+	- *Starbucks List*: List all the Starbucks stores that were fetched from the Opendata API. Details are provided for every Starbucks Store, through the launch of a new **activity** which randomly displays an Starbucks Store image from a pool of ten presaved images. 
+	- *Maps*: Look at all the starbucks, straight from a map
+	- *App Details*: Please send us a feedback on how you like the app, email addresses are already set ;)
+	
+- Action bar: features a database refreshment mecanism. The data is fetched to a distant server using the Opendata API. The received data is coded through a JSON format. Raw data includes location (longtide, latitude), city and address.
+- App can be used offline, thanks to a database that saves the Starbucks data. The database is refreshed on app opening, provided the device has got access to the Internet. The databse can also be refreshed manually through a dedicated button in the action bar. 
+
 ## Fonctionnement général de l'app
 
 - L'application se présente sous la forme d'une **activité** principale gérant 3 **fragments**:
