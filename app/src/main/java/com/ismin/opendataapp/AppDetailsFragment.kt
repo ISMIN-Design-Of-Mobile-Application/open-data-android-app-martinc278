@@ -29,6 +29,7 @@ class AppDetailsFragment : Fragment() {
     ): View? {
         rootView = inflater.inflate(R.layout.fragment_app_details, container, false)
         rootView.findViewById<Button>(R.id.buttonSendReview).setOnClickListener{sendEmail() }
+        rootView.findViewById<Button>(R.id.buttonViewReadme).setOnClickListener{viewReadme() }
         return rootView
     }
 
@@ -53,6 +54,13 @@ class AppDetailsFragment : Fragment() {
             //get and show exception message
             //Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun viewReadme() {
+        val url = "https://github.com/ISMIN-Design-Of-Mobile-Application/open-data-android-app-martinc278/blob/master/README.md"
+        val mIntent = Intent(Intent.ACTION_VIEW)
+        mIntent.data = Uri.parse(url)
+        startActivity(mIntent)
     }
 
 
